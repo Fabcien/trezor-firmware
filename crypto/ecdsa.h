@@ -48,6 +48,13 @@ typedef struct {
 
 } ecdsa_curve;
 
+typedef struct jacobian_curve_point {
+  bignum256 x, y, z;
+} jacobian_curve_point;
+
+void curve_to_jacobian(const curve_point *p, jacobian_curve_point *jp,
+                       const bignum256 *prime);
+
 // 4 byte prefix + 40 byte data (segwit)
 // 1 byte prefix + 64 byte data (cashaddr)
 #define MAX_ADDR_RAW_SIZE 65

@@ -165,10 +165,6 @@ int point_is_negative_of(const curve_point *p, const curve_point *q) {
   return !bn_is_equal(&(p->y), &(q->y));
 }
 
-typedef struct jacobian_curve_point {
-  bignum256 x, y, z;
-} jacobian_curve_point;
-
 // generate random K for signing/side-channel noise
 static void generate_k_random(bignum256 *k, const bignum256 *prime) {
   do {
