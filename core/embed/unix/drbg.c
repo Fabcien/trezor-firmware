@@ -49,9 +49,15 @@ void drbg_reseed() {
   chacha_drbg_reseed(&drbg_ctx, entropy, sizeof(entropy), NULL, 0);
 }
 
-void drbg_generate(uint8_t *buffer, size_t lenght) {
+void drbg_generate(uint8_t *buffer, size_t length) {
   ensure(initialized, "drbg not initialized");
-  chacha_drbg_generate(&drbg_ctx, buffer, lenght);
+
+  if ((DRBG_RESEED_INTERVAL_CALLS != 0) &
+      (drbg_ctx.reseed_counter > DRBG_RESEED_INTERVAL_CALLS)) {
+    drbg_reseed();
+  }
+
+  chacha_drbg_generate(&drbg_ctx, buffer, length);
 }
 
 uint32_t drbg_random32(void) {
