@@ -60,6 +60,7 @@ async def confirm_action(
     title: str,
     action: str = None,
     description: str = None,
+    description_param: str = None,
     verb: Union[str, bytes, None] = Confirm.DEFAULT_CONFIRM,
     verb_cancel: Union[str, bytes, None] = Confirm.DEFAULT_CANCEL,
     hold: bool = False,
@@ -78,7 +79,9 @@ async def confirm_action(
     )
 
     if reverse and description is not None:
-        text.normal(description)
+        text.format_parametrized(
+            description, description_param if description_param is not None else ""
+        )
     elif action is not None:
         text.bold(action)
 
@@ -90,7 +93,9 @@ async def confirm_action(
     if reverse and action is not None:
         text.bold(action)
     elif description is not None:
-        text.normal(description)
+        text.format_parametrized(
+            description, description_param if description_param is not None else ""
+        )
 
     cls = HoldToConfirm if hold else Confirm
     return is_confirmed(
@@ -368,14 +373,16 @@ def show_warning(
     ctx: wire.GenericContext,
     br_type: str,
     content: str,
+    header: str = "Warning",
     subheader: Optional[str] = None,
     button: str = "Try again",
+    br_code: EnumTypeButtonRequestType = ButtonRequestType.Warning,
 ) -> Awaitable[bool]:
     return _show_modal(
         ctx,
         br_type=br_type,
-        br_code=ButtonRequestType.Warning,
-        header="Warning",
+        br_code=br_code,
+        header=header,
         subheader=subheader,
         content=content,
         button_confirm=button,
