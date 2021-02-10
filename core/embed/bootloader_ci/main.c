@@ -22,6 +22,7 @@
 
 #include "common.h"
 #include "display.h"
+#include "drbg.h"
 #include "flash.h"
 #include "image.h"
 #include "mini_printf.h"
@@ -214,7 +215,7 @@ static void check_bootloader_version(void) {
 #endif
 
 int main(void) {
-  drbg_init();
+  drbg_init(NULL, 0);
   touch_init();
   touch_power_on();
 
