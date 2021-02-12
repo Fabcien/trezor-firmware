@@ -354,6 +354,7 @@ def show_error(
     header: str = "Error",
     subheader: Optional[str] = None,
     button: str = "Close",
+    red: bool = False,
 ) -> Awaitable[bool]:
     return _show_modal(
         ctx,
@@ -365,7 +366,7 @@ def show_error(
         button_confirm=None,
         button_cancel=button,
         icon=ui.ICON_WRONG,
-        icon_color=ui.ORANGE_ICON,
+        icon_color=ui.RED if red else ui.ORANGE_ICON,
     )
 
 
