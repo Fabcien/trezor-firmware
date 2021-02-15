@@ -89,13 +89,6 @@ def _networks_iterator() -> Iterator[NetworkInfo]:
         rskip60=False,
     )
     yield NetworkInfo(
-        chain_id=5,
-        slip44=1,
-        shortcut="tGOR",
-        name="Ethereum Testnet Görli",
-        rskip60=False,
-    )
-    yield NetworkInfo(
         chain_id=6,
         slip44=1,
         shortcut="tKOT",
@@ -124,6 +117,13 @@ def _networks_iterator() -> Iterator[NetworkInfo]:
         rskip60=False,
     )
     yield NetworkInfo(
+        chain_id=10,
+        slip44=60,
+        shortcut="OETH",
+        name="Optimistic Ethereum",
+        rskip60=False,
+    )
+    yield NetworkInfo(
         chain_id=11,
         slip44=916,
         shortcut="META",
@@ -135,20 +135,6 @@ def _networks_iterator() -> Iterator[NetworkInfo]:
         slip44=1,
         shortcut="tKAL",
         name="Metadium Testnet",
-        rskip60=False,
-    )
-    yield NetworkInfo(
-        chain_id=13,
-        slip44=1,
-        shortcut="tsDIO",
-        name="Diode Testnet Staging",
-        rskip60=False,
-    )
-    yield NetworkInfo(
-        chain_id=15,
-        slip44=60,
-        shortcut="DIO",
-        name="Diode Prenet",
         rskip60=False,
     )
     yield NetworkInfo(
@@ -366,13 +352,6 @@ def _networks_iterator() -> Iterator[NetworkInfo]:
         slip44=60,
         shortcut="LISINSKI",
         name="Lisinski",
-        rskip60=False,
-    )
-    yield NetworkInfo(
-        chain_id=420,
-        slip44=60,
-        shortcut="OETH",
-        name="Optimistic Ethereum",
         rskip60=False,
     )
     yield NetworkInfo(
