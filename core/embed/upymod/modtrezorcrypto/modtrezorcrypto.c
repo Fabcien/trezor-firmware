@@ -71,6 +71,7 @@ static void wrapped_ui_wait_callback(uint32_t current, uint32_t total) {
 #endif
 #if !BITCOIN_ONLY
 #include "modtrezorcrypto-cardano.h"
+#include "modtrezorcrypto-ecash.h"
 #include "modtrezorcrypto-monero.h"
 #include "modtrezorcrypto-nem.h"
 #endif

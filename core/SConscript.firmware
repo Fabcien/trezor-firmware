@@ -146,6 +146,7 @@ SOURCE_MOD_CRYPTO += [
 if EVERYTHING:
     SOURCE_MOD_CRYPTO += [
         'vendor/trezor-crypto/cardano.c',
+        'vendor/trezor-crypto/ecash/schnorr.c',
         'vendor/trezor-crypto/monero/base58.c',
         'vendor/trezor-crypto/monero/serialize.c',
         'vendor/trezor-crypto/monero/xmr.c',
