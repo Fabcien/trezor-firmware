@@ -78,6 +78,7 @@ CPPDEFINES_MOD += [
     ('USE_ETHEREUM', '1' if EVERYTHING else '0'),
     ('USE_MONERO', '1' if EVERYTHING else '0'),
     ('USE_CARDANO', '1' if EVERYTHING else '0'),
+    ('USE_ECASH', '1' if EVERYTHING else '0'),
     ('USE_NEM', '1' if (EVERYTHING and TREZOR_MODEL == "T2T1") else '0'),
     ('USE_EOS', '1' if (EVERYTHING and TREZOR_MODEL == "T2T1") else '0'),
     ('DISABLE_ANIMATION', '1' if DISABLE_ANIMATION else '0'),
@@ -146,6 +147,7 @@ SOURCE_MOD_CRYPTO += [
 if EVERYTHING:
     SOURCE_MOD_CRYPTO += [
         'vendor/trezor-crypto/cardano.c',
+        'vendor/trezor-crypto/ecash/schnorr.c',
         'vendor/trezor-crypto/monero/base58.c',
         'vendor/trezor-crypto/monero/serialize.c',
         'vendor/trezor-crypto/monero/xmr.c',
