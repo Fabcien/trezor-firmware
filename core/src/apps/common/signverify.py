@@ -42,6 +42,20 @@ async def require_confirm_sign_message(
     header = "Sign {} message".format(coin)
     await require_confirm(ctx, paginate_text(decode_message(message), header))
 
+async def require_confirm_verify_message_pubkey(
+    ctx: wire.Context, pubkey: bytes, coin: str, message: bytes
+) -> None:
+    header = "Verify {} message".format(coin)
+    text = Text(header, new_lines=False)
+    text.bold("Confirm pubkey:")
+    text.br()
+    text.mono(hexlify(pubkey).decode())
+    await require_confirm(ctx, text)
+
+    await require_confirm(
+        ctx,
+        paginate_text(decode_message(message), header, font=ui.MONO),
+    )
 
 async def require_confirm_verify_message(
     ctx: wire.Context, address: str, coin: str, message: bytes

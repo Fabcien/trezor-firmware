@@ -6,6 +6,7 @@ if __debug__:
     try:
         from typing import Dict, List  # noqa: F401
         from typing_extensions import Literal  # noqa: F401
+        EnumTypeSigningAlgo = Literal[0, 1]
     except ImportError:
         pass
 
@@ -20,11 +21,15 @@ class VerifyMessage(p.MessageType):
         signature: bytes,
         message: bytes,
         coin_name: str = "Bitcoin",
+        signing_algo: EnumTypeSigningAlgo = 0,
+        pubkey: bytes = None,
     ) -> None:
         self.address = address
         self.signature = signature
         self.message = message
         self.coin_name = coin_name
+        self.signing_algo = signing_algo
+        self.pubkey = pubkey
 
     @classmethod
     def get_fields(cls) -> Dict:
@@ -33,4 +38,6 @@ class VerifyMessage(p.MessageType):
             2: ('signature', p.BytesType, p.FLAG_REQUIRED),
             3: ('message', p.BytesType, p.FLAG_REQUIRED),
             4: ('coin_name', p.UnicodeType, "Bitcoin"),  # default=Bitcoin
+            5: ('signing_algo', p.EnumType("SigningAlgo", (0, 1)), 0),  # default=ECDSA
+            6: ('pubkey', p.BytesType, None),
         }
