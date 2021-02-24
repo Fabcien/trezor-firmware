@@ -7,6 +7,7 @@ if __debug__:
         from typing import Dict, List  # noqa: F401
         from typing_extensions import Literal  # noqa: F401
         EnumTypeInputScriptType = Literal[0, 1, 2, 3, 4]
+        EnumTypeSigningAlgo = Literal[0, 1]
     except ImportError:
         pass
 
@@ -21,11 +22,13 @@ class SignMessage(p.MessageType):
         address_n: List[int] = None,
         coin_name: str = "Bitcoin",
         script_type: EnumTypeInputScriptType = 0,
+        signing_algo: EnumTypeSigningAlgo = 0,
     ) -> None:
         self.address_n = address_n if address_n is not None else []
         self.message = message
         self.coin_name = coin_name
         self.script_type = script_type
+        self.signing_algo = signing_algo
 
     @classmethod
     def get_fields(cls) -> Dict:
@@ -34,4 +37,5 @@ class SignMessage(p.MessageType):
             2: ('message', p.BytesType, p.FLAG_REQUIRED),
             3: ('coin_name', p.UnicodeType, "Bitcoin"),  # default=Bitcoin
             4: ('script_type', p.EnumType("InputScriptType", (0, 1, 2, 3, 4)), 0),  # default=SPENDADDRESS
+            5: ('signing_algo', p.EnumType("SigningAlgo", (0, 1)), 0),  # default=ECDSA
         }

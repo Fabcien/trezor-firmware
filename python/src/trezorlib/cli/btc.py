@@ -41,6 +41,11 @@ OUTPUT_SCRIPTS = {
     "sh-wpkh": messages.OutputScriptType.PAYTOP2SHWITNESS,
 }
 
+SIGNING_ALGO = {
+    "ECDSA": messages.SigningAlgo.ECDSA,
+    "SCHNORRBCH": messages.SigningAlgo.SCHNORRBCH,
+}
+
 DEFAULT_COIN = "Bitcoin"
 
 
@@ -309,13 +314,14 @@ def sign_tx(client, json_file):
 @click.option("-c", "--coin")
 @click.option("-n", "--address", required=True, help="BIP-32 path")
 @click.option("-t", "--script-type", type=ChoiceType(INPUT_SCRIPTS), default="address")
+@click.option("-a", "--signing-algo", type=ChoiceType(SIGNING_ALGO), default="ECDSA")
 @click.argument("message")
 @with_client
-def sign_message(client, coin, address, message, script_type):
+def sign_message(client, coin, address, message, script_type, signing_algo):
     """Sign message using address of given path."""
     coin = coin or DEFAULT_COIN
     address_n = tools.parse_path(address)
-    res = btc.sign_message(client, coin, address_n, message, script_type)
+    res = btc.sign_message(client, coin, address_n, message, script_type, signing_algo)
     return {
         "message": message,
         "address": res.address,
@@ -328,12 +334,16 @@ def sign_message(client, coin, address, message, script_type):
 @click.argument("address")
 @click.argument("signature")
 @click.argument("message")
+@click.option("-a", "--signing-algo", type=ChoiceType(SIGNING_ALGO), default="ECDSA")
+@click.option("-p", "--pubkey")
 @with_client
-def verify_message(client, coin, address, signature, message):
+def verify_message(client, coin, address, signature, message, signing_algo, pubkey):
     """Verify message."""
     signature = base64.b64decode(signature)
+    if pubkey is not None:
+        pubkey = bytes.fromhex(pubkey)
     coin = coin or DEFAULT_COIN
-    return btc.verify_message(client, coin, address, signature, message)
+    return btc.verify_message(client, coin, address, signature, message, signing_algo, pubkey)
 
 
 #

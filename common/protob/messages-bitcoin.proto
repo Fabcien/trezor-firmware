@@ -42,6 +42,14 @@ enum OutputScriptType {
 }
 
 /**
+ * Signature algorithm for signing Tx/Message
+ */
+enum SigningAlgo {
+    ECDSA = 0;      // ECDSA on secp256k1
+    SCHNORRBCH = 1; // BCH compatible Schnorr on secp256k1 variant
+}
+
+/**
  * Type of redeem script used in input
  * @embed
  */
@@ -140,6 +148,7 @@ message SignMessage {
     required bytes message = 2;                                         // message to be signed
     optional string coin_name = 3 [default='Bitcoin'];                  // coin to use for signing
     optional InputScriptType script_type = 4 [default=SPENDADDRESS];    // used to distinguish between various address formats (non-segwit, segwit, etc.)
+    optional SigningAlgo signing_algo = 5 [default=ECDSA];              // select the signature algorithm
 }
 
 /**
@@ -158,10 +167,12 @@ message MessageSignature {
  * @next Failure
  */
 message VerifyMessage {
-    required string address = 1;                        // address to verify
-    required bytes signature = 2;                       // signature to verify
-    required bytes message = 3;                         // message to verify
-    optional string coin_name = 4 [default='Bitcoin'];  // coin to use for verifying
+    required string address = 1;                           // address to verify
+    required bytes signature = 2;                          // signature to verify
+    required bytes message = 3;                            // message to verify
+    optional string coin_name = 4 [default='Bitcoin'];     // coin to use for verifying
+    optional SigningAlgo signing_algo = 5 [default=ECDSA]; // select the signature algorithm, so the same is used for the verification
+    optional bytes pubkey = 6;                             // the pubkey cannot be retrieved from signature when signed with Schnorr, so it needs to be supplied
 }
 
 /**

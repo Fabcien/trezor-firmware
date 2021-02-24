@@ -327,6 +327,7 @@ from . import RecoveryDeviceType
 from . import RequestType
 from . import SafetyCheckLevel
 from . import SdProtectOperationType
+from . import SigningAlgo
 from . import TezosBallotType
 from . import TezosContractType
 from . import WordRequestType

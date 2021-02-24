@@ -156,25 +156,44 @@ def get_ownership_proof(
 
 @expect(messages.MessageSignature)
 def sign_message(
-    client, coin_name, n, message, script_type=messages.InputScriptType.SPENDADDRESS
+    client,
+    coin_name,
+    n,
+    message,
+    script_type=messages.InputScriptType.SPENDADDRESS,
+    signing_algo=messages.SigningAlgo.ECDSA,
 ):
     message = normalize_nfc(message)
     return client.call(
         messages.SignMessage(
-            coin_name=coin_name, address_n=n, message=message, script_type=script_type
+            coin_name=coin_name,
+            address_n=n,
+            message=message,
+            script_type=script_type,
+            signing_algo=signing_algo,
         )
     )
 
 
-def verify_message(client, coin_name, address, signature, message):
-    message = normalize_nfc(message)
+def verify_message(
+    client,
+    coin_name,
+    address,
+    signature,
+    message,
+    signing_algo=messages.SigningAlgo.ECDSA,
+    pubkey=None,
+):
     try:
+        message = normalize_nfc(message)
         resp = client.call(
             messages.VerifyMessage(
                 address=address,
                 signature=signature,
                 message=message,
                 coin_name=coin_name,
+                signing_algo=signing_algo,
+                pubkey=pubkey,
             )
         )
     except exceptions.TrezorFailure:
