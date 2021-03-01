@@ -23,12 +23,14 @@ class SignMessage(p.MessageType):
         coin_name: str = "Bitcoin",
         script_type: EnumTypeInputScriptType = 0,
         signing_algo: EnumTypeSigningAlgo = 0,
+        is_digest: bool = False,
     ) -> None:
         self.address_n = address_n if address_n is not None else []
         self.message = message
         self.coin_name = coin_name
         self.script_type = script_type
         self.signing_algo = signing_algo
+        self.is_digest = is_digest
 
     @classmethod
     def get_fields(cls) -> Dict:
@@ -38,4 +40,5 @@ class SignMessage(p.MessageType):
             3: ('coin_name', p.UnicodeType, "Bitcoin"),  # default=Bitcoin
             4: ('script_type', p.EnumType("InputScriptType", (0, 1, 2, 3, 4)), 0),  # default=SPENDADDRESS
             5: ('signing_algo', p.EnumType("SigningAlgo", (0, 1)), 0),  # default=ECDSA
+            6: ('is_digest', p.BoolType, False),  # default=false
         }

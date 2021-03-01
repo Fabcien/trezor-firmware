@@ -44,6 +44,7 @@ async def sign_message(
     address_n = msg.address_n
     script_type = msg.script_type or 0
     signing_algo = msg.signing_algo or ECDSA
+    is_digest = msg.is_digest or False
 
     await validate_path(ctx, keychain, address_n)
     await require_confirm_sign_message(ctx, coin.coin_shortcut, message)
@@ -53,7 +54,7 @@ async def sign_message(
 
     address = get_address(script_type, coin, node)
 
-    digest = message_digest(coin, message)
+    digest = message if is_digest else message_digest(coin, message)
 
     if signing_algo == ECDSA:
         signature = sign_message_ecdsa(address, seckey, digest, script_type)

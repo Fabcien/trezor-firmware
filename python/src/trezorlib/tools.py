@@ -194,15 +194,6 @@ def normalize_nfc(txt):
         txt = txt.decode()
     return unicodedata.normalize("NFC", txt).encode()
 
-def normalize_raw(txt):
-    """
-    Ensure the output is bytes. Don't attempt to encode if possible, otherwise
-    fallback to NFC.
-    """
-    if isinstance(txt, bytes):
-        return txt
-    return normalize_nfc(txt)
-
 class expect:
     # Decorator checks if the method
     # returned one of expected protobuf messages

@@ -315,13 +315,16 @@ def sign_tx(client, json_file):
 @click.option("-n", "--address", required=True, help="BIP-32 path")
 @click.option("-t", "--script-type", type=ChoiceType(INPUT_SCRIPTS), default="address")
 @click.option("-a", "--signing-algo", type=ChoiceType(SIGNING_ALGO), default="ECDSA")
+@click.option("-d", "--digest", is_flag=True)
 @click.argument("message")
 @with_client
-def sign_message(client, coin, address, message, script_type, signing_algo):
+def sign_message(client, coin, address, message, script_type, signing_algo, digest):
     """Sign message using address of given path."""
     coin = coin or DEFAULT_COIN
     address_n = tools.parse_path(address)
-    res = btc.sign_message(client, coin, address_n, message, script_type, signing_algo)
+    if digest:
+        message = bytes.fromhex(message)
+    res = btc.sign_message(client, coin, address_n, message, script_type, signing_algo, digest)
     return {
         "message": message,
         "address": res.address,
@@ -336,14 +339,17 @@ def sign_message(client, coin, address, message, script_type, signing_algo):
 @click.argument("message")
 @click.option("-a", "--signing-algo", type=ChoiceType(SIGNING_ALGO), default="ECDSA")
 @click.option("-p", "--pubkey")
+@click.option("-d", "--digest", is_flag=True)
 @with_client
-def verify_message(client, coin, address, signature, message, signing_algo, pubkey):
+def verify_message(client, coin, address, signature, message, signing_algo, pubkey, digest):
     """Verify message."""
     signature = base64.b64decode(signature)
     if pubkey is not None:
         pubkey = bytes.fromhex(pubkey)
+    if digest:
+        message = bytes.fromhex(message)
     coin = coin or DEFAULT_COIN
-    return btc.verify_message(client, coin, address, signature, message, signing_algo, pubkey)
+    return btc.verify_message(client, coin, address, signature, message, signing_algo, pubkey, digest)
 
 
 #

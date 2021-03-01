@@ -162,8 +162,9 @@ def sign_message(
     message,
     script_type=messages.InputScriptType.SPENDADDRESS,
     signing_algo=messages.SigningAlgo.ECDSA,
+    is_digest=False,
 ):
-    message = normalize_nfc(message)
+    message = message if is_digest else normalize_nfc(message)
     return client.call(
         messages.SignMessage(
             coin_name=coin_name,
@@ -171,6 +172,7 @@ def sign_message(
             message=message,
             script_type=script_type,
             signing_algo=signing_algo,
+            is_digest=is_digest,
         )
     )
 
@@ -183,9 +185,10 @@ def verify_message(
     message,
     signing_algo=messages.SigningAlgo.ECDSA,
     pubkey=None,
+    is_digest=False,
 ):
     try:
-        message = normalize_nfc(message)
+        message = message if is_digest else normalize_nfc(message)
         resp = client.call(
             messages.VerifyMessage(
                 address=address,
@@ -194,6 +197,7 @@ def verify_message(
                 coin_name=coin_name,
                 signing_algo=signing_algo,
                 pubkey=pubkey,
+                is_digest=is_digest,
             )
         )
     except exceptions.TrezorFailure:

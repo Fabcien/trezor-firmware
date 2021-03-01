@@ -25,8 +25,8 @@ if False:
     from trezor.messages.VerifyMessage import VerifyMessage
     from trezor.messages.TxInputType import EnumTypeInputScriptType
 
-async def verify_message_ecdsa(ctx: wire.Context, message: bytes, address: str, signature: bytes, coin: CoinInfo) -> bool:
-    digest = message_digest(coin, message)
+async def verify_message_ecdsa(ctx: wire.Context, message: bytes, address: str, signature: bytes, coin: CoinInfo, is_digest: bool) -> bool:
+    digest = message if is_digest else message_digest(coin, message)
 
     recid = signature[0]
     if (recid >= 27 and recid <= 34):
@@ -68,8 +68,8 @@ async def verify_message_ecdsa(ctx: wire.Context, message: bytes, address: str, 
 
     return True
 
-async def verify_message_schnorr(ctx: wire.Context, message: bytes, pubkey: bytes, signature: bytes, coin: CoinInfo) -> bool:
-    digest = message_digest(coin, message)
+async def verify_message_schnorr(ctx: wire.Context, message: bytes, pubkey: bytes, signature: bytes, coin: CoinInfo, is_digest: bool) -> bool:
+    digest = message if is_digest else message_digest(coin, message)
 
     if not secp256k1.verify_schnorr(pubkey, signature, digest):
         return False
@@ -87,14 +87,15 @@ async def verify_message(ctx: wire.Context, msg: VerifyMessage) -> Success:
     coin_name = msg.coin_name or "Bitcoin"
     signing_algo = msg.signing_algo or ECDSA
     pubkey = msg.pubkey or None
+    is_digest = msg.is_digest or False
     coin = coins.by_name(coin_name)
 
     if signing_algo == ECDSA:
-        signature_valid = await verify_message_ecdsa(ctx, message, address, signature, coin)
+        signature_valid = await verify_message_ecdsa(ctx, message, address, signature, coin, is_digest)
     elif signing_algo == SCHNORRBCH:
         if pubkey is None:
             raise wire.ProcessError("Verifying messages signed with Schnorr require supplying the public key")
-        signature_valid = await verify_message_schnorr(ctx, message, pubkey, signature, coin)
+        signature_valid = await verify_message_schnorr(ctx, message, pubkey, signature, coin, is_digest)
     else:
         raise wire.ProcessError("Unsupported signing algorithm")
 

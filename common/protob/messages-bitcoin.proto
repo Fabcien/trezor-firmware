@@ -149,6 +149,7 @@ message SignMessage {
     optional string coin_name = 3 [default='Bitcoin'];                  // coin to use for signing
     optional InputScriptType script_type = 4 [default=SPENDADDRESS];    // used to distinguish between various address formats (non-segwit, segwit, etc.)
     optional SigningAlgo signing_algo = 5 [default=ECDSA];              // select the signature algorithm
+    optional bool is_digest = 6 [default=false];                        // message is the digest bytes to sign
 }
 
 /**
@@ -173,6 +174,7 @@ message VerifyMessage {
     optional string coin_name = 4 [default='Bitcoin'];     // coin to use for verifying
     optional SigningAlgo signing_algo = 5 [default=ECDSA]; // select the signature algorithm, so the same is used for the verification
     optional bytes pubkey = 6;                             // the pubkey cannot be retrieved from signature when signed with Schnorr, so it needs to be supplied
+    optional bool is_digest = 7 [default=false];           // message is the digest bytes to verify
 }
 
 /**

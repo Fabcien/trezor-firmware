@@ -23,6 +23,7 @@ class VerifyMessage(p.MessageType):
         coin_name: str = "Bitcoin",
         signing_algo: EnumTypeSigningAlgo = 0,
         pubkey: bytes = None,
+        is_digest: bool = False,
     ) -> None:
         self.address = address
         self.signature = signature
@@ -30,6 +31,7 @@ class VerifyMessage(p.MessageType):
         self.coin_name = coin_name
         self.signing_algo = signing_algo
         self.pubkey = pubkey
+        self.is_digest = is_digest
 
     @classmethod
     def get_fields(cls) -> Dict:
@@ -40,4 +42,5 @@ class VerifyMessage(p.MessageType):
             4: ('coin_name', p.UnicodeType, "Bitcoin"),  # default=Bitcoin
             5: ('signing_algo', p.EnumType("SigningAlgo", (0, 1)), 0),  # default=ECDSA
             6: ('pubkey', p.BytesType, None),
+            7: ('is_digest', p.BoolType, False),  # default=false
         }
