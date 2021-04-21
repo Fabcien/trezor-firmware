@@ -16,6 +16,7 @@ RUST_SRC = THIS_FILE.parent / "src"
 ALTCOIN_PREFIXES = (
     "binance",
     "cardano",
+    "ecash",
     "eos",
     "ethereum",
     "fido",

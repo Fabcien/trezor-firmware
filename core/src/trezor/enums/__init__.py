@@ -245,6 +245,7 @@ if TYPE_CHECKING:
         Translations = 19
         Brightness = 20
         Haptic = 21
+        Ecash = 22
 
     class SdProtectOperationType(IntEnum):
         DISABLE = 0
@@ -591,6 +592,8 @@ if TYPE_CHECKING:
         SolanaAddress = 903
         SolanaSignTx = 904
         SolanaTxSignature = 905
+        EcashSignStake = 1100
+        EcashStakeSignature = 1101
         BenchmarkListNames = 9100
         BenchmarkNames = 9101
         BenchmarkRun = 9102

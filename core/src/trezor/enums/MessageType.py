@@ -250,3 +250,5 @@ if not utils.BITCOIN_ONLY:
     SolanaAddress = 903
     SolanaSignTx = 904
     SolanaTxSignature = 905
+    EcashSignStake = 1100
+    EcashStakeSignature = 1101

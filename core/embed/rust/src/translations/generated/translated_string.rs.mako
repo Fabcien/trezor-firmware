@@ -10,6 +10,7 @@ import re
 ALTCOIN_PREFIXES = (
     "binance",
     "cardano",
+    "ecash",
     "eos",
     "ethereum",
     "fido",

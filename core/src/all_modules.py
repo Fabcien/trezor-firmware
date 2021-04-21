@@ -547,6 +547,14 @@ if not utils.BITCOIN_ONLY:
     import apps.cardano.sign_tx.signer
     apps.common.mnemonic
     import apps.common.mnemonic
+    apps.ecash
+    import apps.ecash
+    apps.ecash.layout
+    import apps.ecash.layout
+    apps.ecash.sign_stake
+    import apps.ecash.sign_stake
+    apps.ecash.writers
+    import apps.ecash.writers
     apps.eos
     import apps.eos
     apps.eos.actions

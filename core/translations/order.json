@@ -990,5 +990,12 @@
   "988": "solana__vote_account",
   "989": "solana__stake_on_question",
   "990": "sign_message__confirm_without_review",
-  "991": "instructions__tap_to_continue"
+  "991": "instructions__tap_to_continue",
+  "992": "ecash__block_height",
+  "993": "ecash__confirm_sign_stake",
+  "994": "ecash__expiration_time",
+  "995": "ecash__is_coinbase",
+  "996": "ecash__master_pubkey",
+  "997": "ecash__output_index",
+  "998": "ecash__transaction_id"
 }

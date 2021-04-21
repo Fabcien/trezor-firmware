@@ -1,0 +1,32 @@
+syntax = "proto2";
+package hw.trezor.messages.ecash;
+
+// Sugar for easier handling in Java
+option java_package = "com.satoshilabs.trezor.lib.protobuf";
+option java_outer_classname = "TrezorMessageEcash";
+
+/**
+ * Request: Ask device to sign a stake
+ * @start
+ * @next EcashStakeSignature
+ * @next Failure
+ */
+message EcashSignStake {
+    repeated uint32 address_n = 1;       // BIP-32 path to derive the key from master node
+    required bytes txid = 2;             // the utxo txid
+    required uint32 index = 3;           // the utxo index
+    required uint64 amount = 4;          // the utxo amount
+    required uint32 height = 5;          // block height of the utxo
+    required bool is_coinbase = 6;       // whether the utxo is a coinbase reward
+    required uint64 expiration_time = 8; // the proof expiration time
+    required bytes master_pubkey = 9;    // the proof master public key
+}
+
+/**
+ * Response: Stake Signature
+ * @end
+ */
+message EcashStakeSignature {
+    required bytes pubkey = 1;    // public key to verify the signature
+    required bytes signature = 2; // signature of the stake
+}

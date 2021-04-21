@@ -19,6 +19,7 @@ PATTERNS = (
 ALTCOINS = (
     "binance",
     "cardano",
+    "ecash",
     "eos",
     "ethereum",
     "monero",

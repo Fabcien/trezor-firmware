@@ -1402,6 +1402,20 @@ pub enum TranslatedString {
     solana__stake_on_question = 989,  // "Stake SOL on {0}?"
     sign_message__confirm_without_review = 990,  // "Confirm without review"
     instructions__tap_to_continue = 991,  // "Tap to continue"
+    #[cfg(feature = "universal_fw")]
+    ecash__block_height = 992,  // "Block height:"
+    #[cfg(feature = "universal_fw")]
+    ecash__confirm_sign_stake = 993,  // "Confirm eCash stake"
+    #[cfg(feature = "universal_fw")]
+    ecash__expiration_time = 994,  // "Expiration time:"
+    #[cfg(feature = "universal_fw")]
+    ecash__is_coinbase = 995,  // "Is coinbase:"
+    #[cfg(feature = "universal_fw")]
+    ecash__master_pubkey = 996,  // "Master public key:"
+    #[cfg(feature = "universal_fw")]
+    ecash__output_index = 997,  // "Output index:"
+    #[cfg(feature = "universal_fw")]
+    ecash__transaction_id = 998,  // "Transaction ID:"
 }
 
 impl TranslatedString {
@@ -2800,6 +2814,20 @@ impl TranslatedString {
             Self::solana__stake_on_question => "Stake SOL on {0}?",
             Self::sign_message__confirm_without_review => "Confirm without review",
             Self::instructions__tap_to_continue => "Tap to continue",
+            #[cfg(feature = "universal_fw")]
+            Self::ecash__block_height => "Block height:",
+            #[cfg(feature = "universal_fw")]
+            Self::ecash__confirm_sign_stake => "Confirm eCash stake",
+            #[cfg(feature = "universal_fw")]
+            Self::ecash__expiration_time => "Expiration time:",
+            #[cfg(feature = "universal_fw")]
+            Self::ecash__is_coinbase => "Is coinbase:",
+            #[cfg(feature = "universal_fw")]
+            Self::ecash__master_pubkey => "Master public key:",
+            #[cfg(feature = "universal_fw")]
+            Self::ecash__output_index => "Output index:",
+            #[cfg(feature = "universal_fw")]
+            Self::ecash__transaction_id => "Transaction ID:",
         }
     }
 
@@ -4197,6 +4225,20 @@ impl TranslatedString {
             Qstr::MP_QSTR_solana__stake_on_question => Some(Self::solana__stake_on_question),
             Qstr::MP_QSTR_sign_message__confirm_without_review => Some(Self::sign_message__confirm_without_review),
             Qstr::MP_QSTR_instructions__tap_to_continue => Some(Self::instructions__tap_to_continue),
+            #[cfg(feature = "universal_fw")]
+            Qstr::MP_QSTR_ecash__block_height => Some(Self::ecash__block_height),
+            #[cfg(feature = "universal_fw")]
+            Qstr::MP_QSTR_ecash__confirm_sign_stake => Some(Self::ecash__confirm_sign_stake),
+            #[cfg(feature = "universal_fw")]
+            Qstr::MP_QSTR_ecash__expiration_time => Some(Self::ecash__expiration_time),
+            #[cfg(feature = "universal_fw")]
+            Qstr::MP_QSTR_ecash__is_coinbase => Some(Self::ecash__is_coinbase),
+            #[cfg(feature = "universal_fw")]
+            Qstr::MP_QSTR_ecash__master_pubkey => Some(Self::ecash__master_pubkey),
+            #[cfg(feature = "universal_fw")]
+            Qstr::MP_QSTR_ecash__output_index => Some(Self::ecash__output_index),
+            #[cfg(feature = "universal_fw")]
+            Qstr::MP_QSTR_ecash__transaction_id => Some(Self::ecash__transaction_id),
             _ => None,
         }
     }

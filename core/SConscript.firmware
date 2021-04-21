@@ -644,6 +644,8 @@ if FROZEN:
         SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'apps/cardano/*/*.py'))
         SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'trezor/enums/Cardano*.py'))
 
+        SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'apps/ecash/*.py'))
+
         if TREZOR_MODEL == "T2T1":
             SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'apps/eos/*.py'))
             SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'apps/eos/*/*.py'))
@@ -778,7 +780,6 @@ BOOTLOADER_SUFFIX = TREZOR_MODEL
 if BOOTLOADER_QA or BOOTLOADER_DEVEL:
     BOOTLOADER_SUFFIX += '_qa'
 
-# select vendor header
 if BOOTLOADER_QA or BOOTLOADER_DEVEL:
     vendor = "dev_DO_NOT_SIGN_signed_dev"
 elif not PRODUCTION:

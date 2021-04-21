@@ -82,6 +82,8 @@ trezor_message_impl! {
     DebugLinkWatchLayout => MessageType_DebugLinkWatchLayout,
     DebugLinkResetDebugEvents => MessageType_DebugLinkResetDebugEvents,
     DebugLinkOptigaSetSecMax => MessageType_DebugLinkOptigaSetSecMax,
+    EcashSignStake => MessageType_EcashSignStake,
+    EcashStakeSignature => MessageType_EcashStakeSignature,
     BenchmarkListNames => MessageType_BenchmarkListNames,
     BenchmarkNames => MessageType_BenchmarkNames,
     BenchmarkRun => MessageType_BenchmarkRun,
