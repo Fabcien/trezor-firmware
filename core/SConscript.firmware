@@ -647,6 +647,8 @@ if FROZEN:
         SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'apps/cardano/*/*.py'))
         SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'trezor/enums/Cardano*.py'))
 
+        SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'apps/ecash/*.py'))
+
         if TREZOR_MODEL == "T2T1":
             SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'apps/eos/*.py'))
             SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'apps/eos/*/*.py'))

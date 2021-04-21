@@ -1382,6 +1382,20 @@ pub enum TranslatedString {
     misc__enable_labeling = 973,  // "Enable labeling?"
     #[cfg(feature = "universal_fw")]
     ethereum__unknown_contract_address_short = 974,  // "Unknown contract address."
+    #[cfg(feature = "universal_fw")]
+    ecash__block_height = 975,  // "Block height:"
+    #[cfg(feature = "universal_fw")]
+    ecash__confirm_sign_stake = 976,  // "Confirm eCash stake"
+    #[cfg(feature = "universal_fw")]
+    ecash__expiration_time = 977,  // "Expiration time:"
+    #[cfg(feature = "universal_fw")]
+    ecash__is_coinbase = 978,  // "Is coinbase:"
+    #[cfg(feature = "universal_fw")]
+    ecash__master_pubkey = 979,  // "Master public key:"
+    #[cfg(feature = "universal_fw")]
+    ecash__output_index = 980,  // "Output index:"
+    #[cfg(feature = "universal_fw")]
+    ecash__transaction_id = 981,  // "Transaction ID:"
 }
 
 impl TranslatedString {
@@ -2760,6 +2774,20 @@ impl TranslatedString {
             Self::misc__enable_labeling => "Enable labeling?",
             #[cfg(feature = "universal_fw")]
             Self::ethereum__unknown_contract_address_short => "Unknown contract address.",
+            #[cfg(feature = "universal_fw")]
+            Self::ecash__block_height => "Block height:",
+            #[cfg(feature = "universal_fw")]
+            Self::ecash__confirm_sign_stake => "Confirm eCash stake",
+            #[cfg(feature = "universal_fw")]
+            Self::ecash__expiration_time => "Expiration time:",
+            #[cfg(feature = "universal_fw")]
+            Self::ecash__is_coinbase => "Is coinbase:",
+            #[cfg(feature = "universal_fw")]
+            Self::ecash__master_pubkey => "Master public key:",
+            #[cfg(feature = "universal_fw")]
+            Self::ecash__output_index => "Output index:",
+            #[cfg(feature = "universal_fw")]
+            Self::ecash__transaction_id => "Transaction ID:",
         }
     }
 
@@ -4137,6 +4165,20 @@ impl TranslatedString {
             Qstr::MP_QSTR_misc__enable_labeling => Some(Self::misc__enable_labeling),
             #[cfg(feature = "universal_fw")]
             Qstr::MP_QSTR_ethereum__unknown_contract_address_short => Some(Self::ethereum__unknown_contract_address_short),
+            #[cfg(feature = "universal_fw")]
+            Qstr::MP_QSTR_ecash__block_height => Some(Self::ecash__block_height),
+            #[cfg(feature = "universal_fw")]
+            Qstr::MP_QSTR_ecash__confirm_sign_stake => Some(Self::ecash__confirm_sign_stake),
+            #[cfg(feature = "universal_fw")]
+            Qstr::MP_QSTR_ecash__expiration_time => Some(Self::ecash__expiration_time),
+            #[cfg(feature = "universal_fw")]
+            Qstr::MP_QSTR_ecash__is_coinbase => Some(Self::ecash__is_coinbase),
+            #[cfg(feature = "universal_fw")]
+            Qstr::MP_QSTR_ecash__master_pubkey => Some(Self::ecash__master_pubkey),
+            #[cfg(feature = "universal_fw")]
+            Qstr::MP_QSTR_ecash__output_index => Some(Self::ecash__output_index),
+            #[cfg(feature = "universal_fw")]
+            Qstr::MP_QSTR_ecash__transaction_id => Some(Self::ecash__transaction_id),
             _ => None,
         }
     }

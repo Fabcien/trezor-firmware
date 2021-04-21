@@ -973,5 +973,12 @@
   "971": "instructions__view_all_data",
   "972": "ethereum__interaction_contract",
   "973": "misc__enable_labeling",
-  "974": "ethereum__unknown_contract_address_short"
+  "974": "ethereum__unknown_contract_address_short",
+  "975": "ecash__block_height",
+  "976": "ecash__confirm_sign_stake",
+  "977": "ecash__expiration_time",
+  "978": "ecash__is_coinbase",
+  "979": "ecash__master_pubkey",
+  "980": "ecash__output_index",
+  "981": "ecash__transaction_id"
 }

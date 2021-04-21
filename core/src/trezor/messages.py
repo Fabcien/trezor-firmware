@@ -3054,6 +3054,50 @@ if TYPE_CHECKING:
         def is_type_of(cls, msg: Any) -> TypeGuard["DebugLinkOptigaSetSecMax"]:
             return isinstance(msg, cls)
 
+    class EcashSignStake(protobuf.MessageType):
+        address_n: "list[int]"
+        txid: "bytes"
+        index: "int"
+        amount: "int"
+        height: "int"
+        is_coinbase: "bool"
+        expiration_time: "int"
+        master_pubkey: "bytes"
+
+        def __init__(
+            self,
+            *,
+            txid: "bytes",
+            index: "int",
+            amount: "int",
+            height: "int",
+            is_coinbase: "bool",
+            expiration_time: "int",
+            master_pubkey: "bytes",
+            address_n: "list[int] | None" = None,
+        ) -> None:
+            pass
+
+        @classmethod
+        def is_type_of(cls, msg: Any) -> TypeGuard["EcashSignStake"]:
+            return isinstance(msg, cls)
+
+    class EcashStakeSignature(protobuf.MessageType):
+        pubkey: "bytes"
+        signature: "bytes"
+
+        def __init__(
+            self,
+            *,
+            pubkey: "bytes",
+            signature: "bytes",
+        ) -> None:
+            pass
+
+        @classmethod
+        def is_type_of(cls, msg: Any) -> TypeGuard["EcashStakeSignature"]:
+            return isinstance(msg, cls)
+
     class EosGetPublicKey(protobuf.MessageType):
         address_n: "list[int]"
         show_display: "bool | None"

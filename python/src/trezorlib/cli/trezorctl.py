@@ -38,6 +38,7 @@ from . import (
     crypto,
     debug,
     device,
+    ecash,
     eos,
     ethereum,
     fido,
@@ -78,6 +79,7 @@ COMMAND_ALIASES = {
     "eth": ethereum.cli,
     "ada": cardano.cli,
     "sol": solana.cli,
+    "xec": ecash.cli,
     "xmr": monero.cli,
     "xrp": ripple.cli,
     "xlm": stellar.cli,
@@ -404,6 +406,7 @@ cli.add_command(btc.cli)
 cli.add_command(cardano.cli)
 cli.add_command(crypto.cli)
 cli.add_command(device.cli)
+cli.add_command(ecash.cli)
 cli.add_command(eos.cli)
 cli.add_command(ethereum.cli)
 cli.add_command(fido.cli)

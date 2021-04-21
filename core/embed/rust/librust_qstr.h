@@ -931,6 +931,13 @@ static void _librust_qstrs(void) {
   MP_QSTR_cardano__weight;
   MP_QSTR_cardano__withdrawal_for_address_template;
   MP_QSTR_cardano__x_of_y_signatures_template;
+  MP_QSTR_ecash__block_height;
+  MP_QSTR_ecash__confirm_sign_stake;
+  MP_QSTR_ecash__expiration_time;
+  MP_QSTR_ecash__is_coinbase;
+  MP_QSTR_ecash__master_pubkey;
+  MP_QSTR_ecash__output_index;
+  MP_QSTR_ecash__transaction_id;
   MP_QSTR_eos__about_to_sign_template;
   MP_QSTR_eos__action_name;
   MP_QSTR_eos__arbitrary_data;
