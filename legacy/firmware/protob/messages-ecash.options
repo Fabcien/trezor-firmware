@@ -1,0 +1,6 @@
+EcashSignStake.address_n        max_count:8
+EcashSignStake.txid             max_size:32
+EcashSignStake.master_pubkey    max_size:65
+
+EcashStakeSignature.pubkey      max_size:33
+EcashStakeSignature.signature   max_size:64

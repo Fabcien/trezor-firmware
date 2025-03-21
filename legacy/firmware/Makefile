@@ -124,6 +124,9 @@ OBJS += ../vendor/trezor-crypto/chacha20poly1305/rfc7539.o
 
 OBJS += ../vendor/trezor-crypto/nem.o
 
+CFLAGS += -DUSE_ECASH=1
+OBJS += ../vendor/trezor-crypto/ecash/schnorr.o
+
 OBJS += ../vendor/QR-Code-generator/c/qrcodegen.o
 
 OBJS += ../vendor/trezor-storage/storage.o
@@ -143,6 +146,7 @@ OBJS += protob/messages-management.pb.o
 
 ifneq ($(BITCOIN_ONLY),1)
 OBJS += ../vendor/trezor-crypto/cash_addr.o
+OBJS += protob/messages-ecash.pb.o
 OBJS += protob/messages-ethereum.pb.o
 OBJS += protob/messages-ethereum-definitions.pb.o
 OBJS += protob/messages-nem.pb.o

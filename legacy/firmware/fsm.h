@@ -24,6 +24,7 @@
 #include "messages-bitcoin.pb.h"
 #include "messages-crypto.pb.h"
 #include "messages-debug.pb.h"
+#include "messages-ecash.pb.h"
 #include "messages-ethereum.pb.h"
 #include "messages-management.pb.h"
 #include "messages-nem.pb.h"
@@ -107,6 +108,10 @@ void fsm_msgDebugLinkMemoryRead(const DebugLinkMemoryRead *msg);
 void fsm_msgDebugLinkFlashErase(const DebugLinkFlashErase *msg);
 void fsm_msgDebugLinkReseedRandom(const DebugLinkReseedRandom *msg);
 #endif
+
+// eCash
+#include <ecash/schnorr.h>
+void fsm_msgEcashSignStake(const EcashSignStake *msg);
 
 // ethereum
 void fsm_msgEthereumGetAddress(const EthereumGetAddress *msg);

@@ -460,6 +460,7 @@ bool fsm_layoutDifferentPathsWarning(void) {
 
 #if !BITCOIN_ONLY
 
+#include "fsm_msg_ecash.h"
 #include "fsm_msg_ethereum.h"
 #include "fsm_msg_nem.h"
 #include "fsm_msg_stellar.h"

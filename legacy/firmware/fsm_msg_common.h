@@ -88,7 +88,7 @@ bool get_features(Features *resp) {
   resp->capabilities[0] = Capability_Capability_Bitcoin;
   resp->capabilities[1] = Capability_Capability_Crypto;
 #else
-  resp->capabilities_count = 7;
+  resp->capabilities_count = 8;
   resp->capabilities[0] = Capability_Capability_Bitcoin;
   resp->capabilities[1] = Capability_Capability_Bitcoin_like;
   resp->capabilities[2] = Capability_Capability_Crypto;
@@ -96,6 +96,7 @@ bool get_features(Features *resp) {
   resp->capabilities[4] = Capability_Capability_NEM;
   resp->capabilities[5] = Capability_Capability_Stellar;
   resp->capabilities[6] = Capability_Capability_U2F;
+  resp->capabilities[7] = Capability_Capability_Ecash;
 #endif
   return resp;
 }
